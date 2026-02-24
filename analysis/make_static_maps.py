@@ -116,13 +116,8 @@ def make_map(mode, minutes):
     area_col   = f"{mode}_area_{minutes}"
     pop_col    = f"{mode}_pop_{minutes}"
 
-    # ── Figure layout ──────────────────────────────────────────────────────────
-    fig = plt.figure(figsize=(20, 14), dpi=150, facecolor="white")
-    # Left: map (wider); Right: table panel
-    gs = GridSpec(1, 2, figure=fig, width_ratios=[3, 1.2], wspace=0.03)
-    ax_map   = fig.add_subplot(gs[0])
-    ax_table = fig.add_subplot(gs[1])
-    ax_table.axis("off")
+    # ── Figure layout — full-width map, no stats panel ─────────────────────────
+    fig, ax_map = plt.subplots(figsize=(16, 13), dpi=150, facecolor="white")
 
     # ── Draw isochrones ────────────────────────────────────────────────────────
     iso.plot(
@@ -134,20 +129,20 @@ def make_map(mode, minutes):
         zorder=2,
     )
 
-    # ── Basemap ────────────────────────────────────────────────────────────────
+    # ── Basemap — Esri WorldGrayCanvas (no API key required) ───────────────────
     try:
         ctx.add_basemap(
             ax_map,
             crs=iso.crs,
-            source=ctx.providers.CartoDB.Positron,
+            source=ctx.providers.Esri.WorldGrayCanvas,
             zoom=12,
-            attribution="© OpenStreetMap contributors © CARTO",
+            attribution="© Esri, HERE, Garmin, OpenStreetMap contributors",
             attribution_size=7,
         )
     except Exception:
         try:
             ctx.add_basemap(ax_map, crs=iso.crs,
-                            source=ctx.providers.Stamen.TonerLite, zoom=12)
+                            source=ctx.providers.OpenStreetMap.Mapnik, zoom=12)
         except Exception:
             ax_map.set_facecolor("#f5f5f5")
 
@@ -226,121 +221,15 @@ def make_map(mode, minutes):
     legend.get_frame().set_linewidth(0.5)
 
     # ── Title ──────────────────────────────────────────────────────────────────
-    fig.text(
-        0.38, 0.97,
+    ax_map.set_title(
         f"Tashkent Metro — {minutes}-Minute {mode_label} Accessibility",
-        ha="center", va="top",
-        fontsize=16, fontweight="bold", color="#1a1a1a",
+        fontsize=16, fontweight="bold", color="#1a1a1a", pad=10,
     )
     fig.text(
-        0.38, 0.935,
-        "Isochrone coverage zones around 49 metro stations",
-        ha="center", va="top",
-        fontsize=10, color="#555555",
+        0.5, 0.01,
+        "© OpenStreetMap contributors · WorldPop · Tashkent Metro (2024–2025)",
+        ha="center", va="bottom", fontsize=7, color="#888888",
     )
-
-    # ── Summary table ─────────────────────────────────────────────────────────
-    station_df, agg_df = build_table(mode, minutes)
-
-    # Top panel: per-line summary
-    ax_table.text(0.5, 0.98, "Summary by Line",
-                  ha="center", va="top", fontsize=11, fontweight="bold",
-                  transform=ax_table.transAxes)
-
-    col_labels = ["Metro Line", "Stations", "Avg Area\n(km²)", "Total Pop."]
-    table_data = []
-    row_colors = []
-    for _, r in agg_df.iterrows():
-        table_data.append([r["Line"], str(r["Stations"]),
-                           f"{r['Avg Area (km²)']:.2f}", r["Total Pop"]])
-        lc = LINE_COLORS.get(r["Line"], "#757575")
-        # pale version of the line colour for row bg
-        rgba = mcolors.to_rgba(lc, alpha=0.15)
-        row_colors.append([rgba, rgba, rgba, rgba])
-
-    tbl = ax_table.table(
-        cellText=table_data,
-        colLabels=col_labels,
-        cellLoc="center",
-        loc="upper center",
-        bbox=[0.0, 0.62, 1.0, 0.34],
-        cellColours=row_colors,
-    )
-    tbl.auto_set_font_size(False)
-    tbl.set_fontsize(8.5)
-    for (r, c), cell in tbl.get_celld().items():
-        cell.set_edgecolor("#cccccc")
-        cell.set_linewidth(0.5)
-        if r == 0:
-            cell.set_facecolor("#e8e8e8")
-            cell.set_text_props(fontweight="bold")
-
-    # Middle panel: overall stats
-    total_pop   = metrics[pop_col].sum()
-    avg_area    = metrics[area_col].mean()
-    median_pop  = metrics[pop_col].median()
-    max_station = metrics.loc[metrics[area_col].idxmax(), "name_uz"]
-    max_area    = metrics[area_col].max()
-
-    stats_lines = [
-        ("Total population reached",  f"{total_pop:,.0f}"),
-        ("Average area per station",  f"{avg_area:.2f} km²"),
-        ("Median population reached", f"{median_pop:,.0f}"),
-        ("Largest zone (station)",    f"{max_station}"),
-        ("Largest zone (area)",       f"{max_area:.2f} km²"),
-    ]
-
-    ax_table.text(0.5, 0.60, "Overall Statistics",
-                  ha="center", va="top", fontsize=11, fontweight="bold",
-                  transform=ax_table.transAxes)
-    y0 = 0.56
-    for label, val in stats_lines:
-        ax_table.text(0.03, y0, label + ":", ha="left", va="top",
-                      fontsize=8.5, color="#555", transform=ax_table.transAxes)
-        ax_table.text(0.97, y0, val, ha="right", va="top",
-                      fontsize=8.5, fontweight="bold", transform=ax_table.transAxes)
-        y0 -= 0.055
-        ax_table.plot([0.01, 0.99], [y0 + 0.022, y0 + 0.022],
-                      linewidth=0.4, color="#dddddd",
-                      transform=ax_table.transAxes, clip_on=False)
-
-    # Bottom panel: per-station table (top 15 by area)
-    ax_table.text(0.5, 0.27, f"Top Stations by {minutes}-min {mode_label} Area",
-                  ha="center", va="top", fontsize=10, fontweight="bold",
-                  transform=ax_table.transAxes)
-
-    top15 = station_df.head(15)
-    st_data = [[r["Station"][:20], f"{r['Area (km²)']:.2f}",
-                f"{r['Population']:,.0f}"]
-               for _, r in top15.iterrows()]
-
-    st_colors = []
-    for _, r in top15.iterrows():
-        lc = LINE_COLORS.get(r["Line"], "#757575")
-        rgba = mcolors.to_rgba(lc, alpha=0.12)
-        st_colors.append([rgba, rgba, rgba])
-
-    tbl2 = ax_table.table(
-        cellText=st_data,
-        colLabels=["Station", "Area\n(km²)", "Pop."],
-        cellLoc="center",
-        loc="upper center",
-        bbox=[0.0, 0.0, 1.0, 0.25],
-        cellColours=st_colors,
-    )
-    tbl2.auto_set_font_size(False)
-    tbl2.set_fontsize(7.5)
-    for (r, c), cell in tbl2.get_celld().items():
-        cell.set_edgecolor("#cccccc")
-        cell.set_linewidth(0.4)
-        if r == 0:
-            cell.set_facecolor("#e8e8e8")
-            cell.set_text_props(fontweight="bold")
-
-    # Source note
-    fig.text(0.5, 0.01,
-             "Data: OpenStreetMap · WorldPop · Valhalla routing · Tashkent Metro (2024–2025)",
-             ha="center", va="bottom", fontsize=7, color="#888888")
 
     # ── Save ──────────────────────────────────────────────────────────────────
     fname = OUT / f"isochrone_{mode}_{minutes}min.png"
