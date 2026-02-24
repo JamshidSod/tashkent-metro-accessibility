@@ -1,0 +1,6 @@
+run_timestamp_utc: 2026-02-23T11:55:57.777840+00:00
+osm_walk_timestamp: 2026-02-22T06:05:37.810095+00:00
+osm_bike_timestamp: 2026-02-22T06:06:21.645961+00:00
+osm_place: Tashkent, Uzbekistan
+stations_count: 49
+time_thresholds_min: [5, 10, 15]

@@ -1,0 +1,50 @@
+station_id,name_uz,name_ru,line,walk_pop_10,bike_pop_10,walk_pop_5,walk_pop_15,walk_rank,walk_pctile,walk_tier,bike_rank,bike_pctile,bike_tier
+CSV_47,Qipchok,Qipchok,Ring Line (Yellow),63476,342772,13650,131150,1,100.0,High,1,100.0,High
+CSV_48,Turon,Turon,Ring Line (Yellow),52018,265475,11268,143281,2,98.0,High,4,93.9,High
+CSV_43,Chinor,Chinor,Chilonzor Line,44028,265728,7189,97472,3,95.9,High,3,95.9,High
+CSV_46,Quruvchilar,Quruvchilar,Ring Line (Yellow),41176,269328,7788,91112,4,93.9,High,2,98.0,High
+CSV_45,Xonobod,Xonobod,Ring Line (Yellow),20065,162842,1550,52638,5,91.8,High,5,91.8,High
+CSV_42,Yangihayot,Yangihayot,Chilonzor Line,7171,137610,469,37376,6,89.8,High,6,89.8,High
+CSV_01,Xalqlar doʻstligi,Xalqlar doʻstligi,Chilonzor Line,4100,26561,834,9144,7,87.8,High,15,71.4,Medium
+CSV_18,Kosmonavtlar,Kosmonavtlar,O'zbekiston Line,3946,28904,815,8676,8,85.7,High,10,81.6,High
+CSV_06,Chorsu,Chorsu,O'zbekiston Line,3796,24007,784,9173,9,83.7,High,20,61.2,Medium
+CSV_08,Mingoʻrik,Mingoʻrik,Yunusobod Line,3773,28369,743,9018,10,81.6,High,11,79.6,Medium
+CSV_29,Yunusobod,Yunusobod,Yunusobod Line,3654,28086,869,8748,11,79.6,Medium,12,77.6,Medium
+CSV_13,Tinchlik,Tinchlik,O'zbekiston Line,3651,20893,709,9053,12,77.6,Medium,26,49.0,Medium
+CSV_10,Beruniy,Beruniy,O'zbekiston Line,3621,25140,779,8361,13,75.5,Medium,16,69.4,Medium
+CSV_07,Oybek,Oybek,O'zbekiston Line,3595,26925,626,8746,14,73.5,Medium,13,75.5,Medium
+CSV_14,Abdulla Qodiriy,Abdulla Qodiriy,Yunusobod Line,3568,18798,776,8311,15,71.4,Medium,30,40.8,Medium
+CSV_15,Minor,Minor,Yunusobod Line,3551,24572,705,8626,16,69.4,Medium,17,67.3,Medium
+CSV_28,Mustaqillik maydoni,Mustaqillik maydoni,Chilonzor Line,3447,23409,883,7951,17,67.3,Medium,21,59.2,Medium
+CSV_21,Amir Temur xiyoboni,Amir Temur xiyoboni,Chilonzor Line,3423,24199,685,8175,18,65.3,Medium,19,63.3,Medium
+CSV_22,Yunus Rajabiy,Yunus Rajabiy,Yunusobod Line,3396,24516,682,8057,19,63.3,Medium,18,65.3,Medium
+CSV_03,Chilonzor,Chilonzor,Chilonzor Line,3384,29308,727,8331,20,61.2,Medium,8,85.7,High
+CSV_00,Novza,Novza,Chilonzor Line,3372,17151,667,8290,21,59.2,Medium,33,34.7,Medium
+CSV_23,Alisher Navoiy,Alisher Navoiy,O'zbekiston Line,3309,22325,729,7625,22,57.1,Medium,24,53.1,Medium
+CSV_38,Matonat,Matonat,Ring Line (Yellow),3190,19723,662,6996,23,55.1,Medium,28,44.9,Medium
+CSV_19,Buyuk Ipak Yoʻli,Buyuk Ipak Yoʻli,Chilonzor Line,3099,29250,449,7551,24,53.1,Medium,9,83.7,High
+CSV_09,Toshkent,Toshkent,O'zbekiston Line,3065,21886,576,7742,25,51.0,Medium,25,51.0,Medium
+CSV_11,Shahriston,Shahriston,Yunusobod Line,3029,14554,640,7778,26,49.0,Medium,39,22.4,Medium
+CSV_24,Paxtakor,Paxtakor,Other,3013,23245,624,7157,27,46.9,Medium,22,57.1,Medium
+CSV_34,Tuzel,Tuzel,Ring Line (Yellow),2991,22862,454,7367,28,44.9,Medium,23,55.1,Medium
+CSV_25,Oʻzbekiston,Oʻzbekiston,O'zbekiston Line,2919,26733,694,7699,29,42.9,Medium,14,73.5,Medium
+CSV_31,Olmos,Olmos,Ring Line (Yellow),2898,17239,561,7002,30,40.8,Medium,32,36.7,Medium
+CSV_26,Olmazor,Olmazor,Chilonzor Line,2888,17041,518,7177,31,38.8,Medium,34,32.7,Medium
+CSV_16,Bodomzor,Bodomzor,Yunusobod Line,2860,20239,431,7678,32,36.7,Medium,27,46.9,Medium
+CSV_33,Yashnobod,Yashnobod,Ring Line (Yellow),2599,19203,442,6784,33,34.7,Medium,29,42.9,Medium
+CSV_02,Mirzo Ulugʻbek,Mirzo Ulugʻbek,Chilonzor Line,2391,16731,526,6917,34,32.7,Medium,35,30.6,Medium
+CSV_44,Tolarik,Tolarik,Ring Line (Yellow),2356,14781,407,5716,35,30.6,Medium,38,24.5,Medium
+CSV_17,Hamid Olimjon,Hamid Olimjon,Chilonzor Line,2341,12785,353,6655,36,28.6,Medium,42,16.3,Low
+CSV_41,O‘zgarish,O‘zgarish,Chilonzor Line,2319,13324,424,5560,37,26.5,Medium,41,18.4,Low
+CSV_20,Pushkin,Pushkin,Chilonzor Line,2166,7063,344,6742,38,24.5,Medium,47,6.1,Low
+CSV_35,Rohat,Rohat,Ring Line (Yellow),2120,12677,422,4677,39,22.4,Medium,43,14.3,Low
+CSV_04,Milliy bogʻ,Milliy bogʻ,Chilonzor Line,2022,14949,339,6135,40,20.4,Medium,37,26.5,Medium
+CSV_27,Do'stlik,Do'stlik,O'zbekiston Line,2002,2210,308,6117,41,18.4,Low,49,2.0,Low
+CSV_30,Turkiston,Turkiston,Yunusobod Line,1991,16702,281,5807,42,16.3,Low,36,28.6,Medium
+CSV_39,Qiyot,Qiyot,Ring Line (Yellow),1980,41517,250,5359,43,14.3,Low,7,87.8,High
+CSV_05,G'afur G'ulom,G'afur G'ulom,O'zbekiston Line,1823,11361,159,5671,44,12.2,Low,46,8.2,Low
+CSV_37,Qo‘yliq,Qo‘yliq,Ring Line (Yellow),1642,14333,104,4753,45,10.2,Low,40,20.4,Medium
+CSV_12,Mashinasozlar,Mashinasozlar,O'zbekiston Line,1621,12003,396,3429,46,8.2,Low,45,10.2,Low
+CSV_32,Texnopark,Texnopark,Ring Line (Yellow),1314,18123,103,3995,47,6.1,Low,31,38.8,Medium
+CSV_40,Choshtepa,Choshtepa,Chilonzor Line,1139,5476,140,3435,48,4.1,Low,48,4.1,Low
+CSV_36,Yangiobod,Yangiobod,Ring Line (Yellow),720,12577,206,1974,49,2.0,Low,44,12.2,Low

@@ -1,0 +1,30 @@
+# Tashkent Metro Accessibility — Python dependencies
+# Generated for reproducibility; pinned to minor versions tested.
+# Install: pip install -r requirements.txt
+#
+# Python >= 3.10 required (3.11 recommended).
+# For GDAL-based packages on macOS: brew install gdal
+# For GDAL-based packages on Ubuntu: apt install libgdal-dev
+
+# ── Core geospatial stack ──────────────────────────────────────────────────────
+geopandas>=0.14,<0.15           # GeoDataFrame + spatial operations
+shapely>=2.0,<3.0               # Geometry primitives
+pyproj>=3.6,<4.0                # CRS transformations (wraps PROJ)
+fiona>=1.9,<2.0                 # GeoJSON / shapefile I/O (GeoDataFrame backend)
+
+# ── Network analysis ───────────────────────────────────────────────────────────
+osmnx>=1.9,<2.0                 # OSM network download + analysis (Boeing 2017)
+networkx>=3.2,<4.0              # Graph algorithms (ego_graph, shortest_path)
+
+# ── Population raster ─────────────────────────────────────────────────────────
+rasterio>=1.3,<2.0              # GeoTIFF I/O
+rasterstats>=0.19,<1.0          # Zonal statistics (sum population within polygon)
+
+# ── Alpha-shape isochrones ────────────────────────────────────────────────────
+alphashape>=1.3,<2.0            # Concave hull generation for ego-graph polygons
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+numpy>=1.26,<2.0
+pandas>=2.1,<3.0
+requests>=2.31,<3.0             # Used internally by osmnx for OSM API calls
+tqdm>=4.66,<5.0                 # Progress bars for long downloads
